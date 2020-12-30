@@ -2,7 +2,7 @@
 
 session_start();
 
-$app_name = 'ace';
+$app_name = 'focus';
 $title = ucfirst($title ?? 'Home');
 
 function session_val(string $key): string {

@@ -8,8 +8,11 @@ require_once "./lib/header.php";
             <?php for($i=0; $i < 10; $i++) { ?>
                 <div class="col-md-3 p-2">
                     <div class="card">
-                        <img class="image-fluid rounded" src="./assets/images/phone.jpg" alt="img">
-                        <p class="p-2">Infinix Zero 8</p>
+                        <img class="image-fluid rounded" src="./assets/images/product-01.jpg" alt="img">
+                        <div class="p-2">
+                            <p class="text-muted mb-1">Infinix Zero 8</p>
+                            <span>$100</span>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
