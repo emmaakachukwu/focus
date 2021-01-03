@@ -1,7 +1,9 @@
 <?php
 
+require_once "./lib/config.php";
+
 $app_name = "Focus";
-$title = $title ?? 'Shop';
+$title = $title ?? 'Home';
 
 ?>
 
@@ -29,9 +31,16 @@ $title = $title ?? 'Shop';
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!--  FOR TOASTR -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
 
 <body>
+    <?php toast_errors() ?>
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -40,37 +49,15 @@ $title = $title ?? 'Shop';
                     <div class="menu-wrapper">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            <a href="index.php"><img src="assets/img/logo/logo.png" alt=""></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">shop</a></li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li class="hot"><a href="#">Latest</a>
-                                        <ul class="submenu">
-                                            <li><a href="shop.html"> Product list</a></li>
-                                            <li><a href="product_details.html"> Product Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="elements.html">Element</a></li>
-                                            <li><a href="confirmation.html">Confirmation</a></li>
-                                            <li><a href="checkout.html">Product Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="index.php">products</a></li>
+                                    <li><a href="about.php">about</a></li>
+                                    <li><a href="deposit.php">deposit</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -82,8 +69,8 @@ $title = $title ?? 'Shop';
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
-                                <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
-                                <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
+                                <li> <a href="login.php"><span class="flaticon-user"></span></a></li>
+                                <li class="hot"><a href="cart.php"><span class="flaticon-shopping-cart"></span></a></li>
                             </ul>
                         </div>
                     </div>

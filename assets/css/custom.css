@@ -1,0 +1,33 @@
+li.hot {
+    position: relative;
+}
+
+li.hot::before {
+    position: absolute;
+    content: "0";
+    background: #ff003c;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 10px;
+    top: -10px;
+    right: 1px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 3px 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.popular-img {
+    background-image: url("./../img/hero/about_hero.png");
+    height: 250px;
+}
+
+.popular-img h3 {
+    line-height: 250px;
+    font-size: 65px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
