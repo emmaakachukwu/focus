@@ -94,6 +94,9 @@
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
 
+    <!-- custom scripts -->
+    <script src="./scripts/cart.js"></script>
+
 </body>
 
 </html>

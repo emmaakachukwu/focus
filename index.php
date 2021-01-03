@@ -25,15 +25,19 @@ if ( $result->num_rows ) {
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                                             <div class="single-popular-items mb-50 text-center">
                                                 <div class="popular-img">
-                                                    <img src="assets/img/gallery/popular1.png" alt="">
-                                                    <div class="img-cap">
-                                                        <span>Add to cart</span>
+                                                    <?php if ( isset($product->image_path) && !empty($product->image_path) ) { ?>
+                                                        <img src="./uploads/products/<?php echo $product->image_path ?>" alt="<?php echo $product->name ?>">
+                                                    <?php } else {  ?>
+                                                        <h3><?php echo get_inits($product->name) ?> </h3>
+                                                    <?php } ?>
+                                                    <div class="img-cap" onclick="add_to_cart('<?php echo $product->id ?>', '<?php echo $product->name ?>', '<?php echo $product->price ?>', '<?php echo $product->image_path ?? '' ?>')">
+                                                        <span id="add-<?php echo $product->id ?>" onload="check_product('<?php echo $product->id ?>')">Add to cart</span>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="popular-caption">
                                                     <h3><?php echo $product->name ?></h3>
-                                                    <span>product name</span>
+                                                    <span>$ <?php echo number_format($product->price) ?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,4 +52,8 @@ if ( $result->num_rows ) {
         <?php include_once "./components/shop_method.php"; ?>
     </main>
 
-<?php include_once "./components/footer.php";
+<?php include_once "./components/footer.php" ?>
+
+<script>
+    check_products_in_cart(<?php echo json_encode($products) ?>)
+</script>

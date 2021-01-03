@@ -27,7 +27,7 @@ li.hot::before {
 
 .popular-img h3 {
     line-height: 250px;
-    font-size: 65px;
+    font-size: 120px;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
 }

@@ -70,7 +70,7 @@ $title = $title ?? 'Home';
                                     </div>
                                 </li>
                                 <li> <a href="login.php"><span class="flaticon-user"></span></a></li>
-                                <li class="hot"><a href="cart.php"><span class="flaticon-shopping-cart"></span></a></li>
+                                <li class="hot" id="hot"><a href="cart.php"><span class="flaticon-shopping-cart"></span></a></li>
                             </ul>
                         </div>
                     </div>
