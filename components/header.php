@@ -55,9 +55,9 @@ $title = $title ?? 'Home';
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index.php">products</a></li>
-                                    <li><a href="about.php">about</a></li>
+                                    <li><a href="index.php">home</a></li>
                                     <li><a href="deposit.php">deposit</a></li>
+                                    <li><a href="about.php">about</a></li>
                                 </ul>
                             </nav>
                         </div>

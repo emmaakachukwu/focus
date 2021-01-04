@@ -2,7 +2,6 @@ let cart = get_cart();
 
 function add_to_cart(id, name, price, image, quantity = 1) {
     check = check_product(id)
-    console.log(check)
     if (!check) {
         let product = {
             id,

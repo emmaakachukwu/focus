@@ -25,8 +25,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `products` (
     `name` VARCHAR(100) NOT NULL,
     `price` INT(50) NOT NULL,
     `desc` MEDIUMTEXT NULL,
-    `formula` VARCHAR(50) NULL,
-    `image_path` VARCHAR(100) NULL,
+    `image_path` varchar(250) NULL,
     `deleted_at` TIMESTAMP NULL,
 
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -34,12 +33,29 @@ $sql = "CREATE TABLE IF NOT EXISTS `products` (
 )";
 $link->query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS `payments` (
+$sql = "CREATE TABLE IF NOT EXISTS `deposits` (
     `id` INT(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `email` VARCHAR(100) NOT NULL,
-    `amount` INT(50) NOT NULL,
-    `image_path` VARCHAR(100) NOT NULL,
+    `user_id` INT(50) NOT NULL,
+    `amount` INT(50) NULL,
     `approved_at` TIMESTAMP NULL,
+
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP NULL
+)";
+$link->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS `orders` (
+    `id` VARCHAR(100) NOT NULL PRIMARY KEY,
+    `user_id` INT(50) NOT NULL,
+    `product_id` INT(50) NOT NULL,
+    `quantity` INT(50) NOT NULL,
+    `paid` BOOLEAN DEFAULT TRUE,
+    `delivered_at` TIMESTAMP NULL,
+
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON DELETE CASCADE,
 
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NULL
@@ -50,31 +66,25 @@ $sql = "CREATE TABLE IF NOT EXISTS `wallets` (
     `id` INT(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `type` VARCHAR(50) NULL,
     `wallet_id` VARCHAR(100) NULL,
-    `bank_name` VARCHAR(100) NULL,
-    `bank_address` VARCHAR(200) NULL,
-    `recipient_name` VARCHAR(100) NULL,
-    `swift_code` VARCHAR(100) NULL,
 
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP NULL
 )";
 $link->query($sql);
 
-$admin_email = 'admin@fadchemicals.com';
+$admin_email = 'admin@focus.com';
 $sql = "SELECT email FROM users WHERE email = '$admin_email' LIMIT 1";
 $result = $link->query($sql);
 if ( !$result->num_rows ) {
-    $sql = "INSERT INTO users (username, email, fname, lname, password, role) VALUES ('fadchemsadmin', '$admin_email', 'fad', 'chemicals', 'fadchemspass100', 'admin')";
+    $sql = "INSERT INTO users (username, email, fname, lname, password, role) VALUES ('focusshopadmin', '$admin_email', 'focus', 'shop', 'focuspass100', 'admin')";
     $link->query($sql);
 }
 
 $sql = "SELECT id FROM wallets LIMIT 1";
 $result = $link->query($sql);
 if ( !$result->num_rows ) {
-    $sql = "INSERT INTO wallets (`type`, wallet_id, bank_name, bank_address, recipient_name, swift_code) VALUES
-            ('btc', '1Mqkt6rMcYKBWvPd63V9ufFjUqc95ugw5y', null, null, null, null),
-            ('bank', '40820810238116105689', 'Sberbank', 'Moscow, st.  Garibaldi, 36.117418', 'Denis Jonathan', 'SABRRUMM'),
-            ('native_lang', '40820810238116105689', 'Сбербанк', 'г. Москва, ул. Гарибальди, д. 36,117418', 'Денис Джонатан', 'SABRRUMM')
+    $sql = "INSERT INTO wallets (`type`, wallet_id) VALUES
+            ('btc', '1Mqkt6rMcYKBWvqwertyuioppoiuy')
         ";
     $link->query($sql);
 }
