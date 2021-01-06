@@ -2,6 +2,7 @@
 
 $sql = "CREATE TABLE IF NOT EXISTS `users` (
     `id` INT(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `uuid` VARCHAR(100) NOT NULL,
     `email` varchar(100) NOT NULL,
     `username` varchar(100) NOT NULL,
     `role` VARCHAR(50) NOT NULL DEFAULT 'user',
@@ -73,10 +74,12 @@ $sql = "CREATE TABLE IF NOT EXISTS `wallets` (
 $link->query($sql);
 
 $admin_email = 'admin@focus.com';
+$admin_username = 'focusshopadmin';
+$uuid = md5($admin_email . $admin_username . '...');
 $sql = "SELECT email FROM users WHERE email = '$admin_email' LIMIT 1";
 $result = $link->query($sql);
 if ( !$result->num_rows ) {
-    $sql = "INSERT INTO users (username, email, fname, lname, password, role) VALUES ('focusshopadmin', '$admin_email', 'focus', 'shop', 'focuspass100', 'admin')";
+    $sql = "INSERT INTO users (uuid, username, email, fname, lname, password, role) VALUES ('$uuid', '$admin_username', '$admin_email', 'focus', 'shop', 'focuspass100', 'admin')";
     $link->query($sql);
 }
 

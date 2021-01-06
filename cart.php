@@ -3,7 +3,6 @@ $title = $header_title = "Cart";
 require_once "./components/header.php";
 
 $cart = json_decode($_COOKIE['cart']);
-// print_r($cart[0]); exit;
 $total = 0;
 foreach ($cart as $c) {
     $total += $c->price;
@@ -128,10 +127,14 @@ foreach ($cart as $c) {
               </table>
               <div class="checkout_btn_inner float-right">
                 <a class="btn_1" href="#">Continue Shopping</a>
-                <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                <form action="./forms/checkout.php" method="post" class="d-inline">
+                  <button type="submit" class="btn_1 checkout_btn_1">Proceed to checkout</button>
+                </form>
               </div>
             </div>
           </div>
       </section>
       <!--================End Cart Area =================-->
-  </main>>
+  </main>
+
+<?php include_once "./components/footer.php" ?>

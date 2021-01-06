@@ -1,5 +1,4 @@
 let cart = get_cart();
-console.log(read_cookie())
 
 function add_to_cart(id, name, price, image, quantity = 1) {
     check = check_product(id)

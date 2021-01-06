@@ -31,3 +31,7 @@ li.hot::before {
     font-weight: bold;
     letter-spacing: 5px;
 }
+
+button {
+    cursor: pointer !important;
+}

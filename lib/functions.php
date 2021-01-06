@@ -69,8 +69,7 @@ function validate_empty_fields (array $post, array $required = []): void {
         if ( empty(trim($value)) && in_array($key, $required) ) {
             array_push($errors, readable_key($key) . ' can not be empty');
         } else if ( $key != 'password' && $key != 'confirm_password' ) {
-            if ( $error_redirect == 'add_product' )
-                $_SESSION[$key] = $value;
+            $_SESSION[$key] = $value;
 
             $short_key = explode('_', $key)[0];
             global $$short_key;
@@ -107,4 +106,20 @@ function on_success (string $path): void {
     $params = count($_GET) ? '?'.http_build_query($_GET) : '';
     header("Location: ./../".$path.".php".$params);
     die();
+}
+
+function logout(): void {
+    header("location: ./../logout.php");
+    die();
+}
+
+function session_val(string $key): string {
+	return isset($_SESSION[$key]) ? $_SESSION[$key] : '';
+}
+
+function clear_sessions(): void {
+	foreach ( $_SESSION as $key => $value ) {
+		if ( $key != 'user' )
+			unset($_SESSION[$key]);
+	}
 }

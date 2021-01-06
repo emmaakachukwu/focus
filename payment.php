@@ -1,6 +1,5 @@
 <?php
-$title = "Make Payment";
-$header_title = 'Make Payment';
+$title = $header_title = "Make Payment";
 require_once "./components/header.php";
 
 $sql = "SELECT * FROM wallets";
