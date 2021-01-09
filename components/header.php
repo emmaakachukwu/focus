@@ -59,7 +59,7 @@ $title = $title ?? 'Home';
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="index.php">home</a></li>
-                                    <li><a href="deposit.php">deposit</a></li>
+                                    <?php if (is_logged_in()) echo "<li><a href='deposit.php'>deposit</a></li>" ?>
                                     <li><a href="about.php">about</a></li>
                                 </ul>
                             </nav>
@@ -72,7 +72,7 @@ $title = $title ?? 'Home';
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
-                                <li> <a href="login.php"><span class="flaticon-user"></span></a></li>
+                                <li><?php echo is_logged_in() ? "<a href='settings.php'><span class='flaticon-search'></span></a>" : "<a href='login.php'><span class='flaticon-user'></span></a>" ?></li>
                                 <li class="hot" id="hot"><a href="cart.php"><span class="flaticon-shopping-cart"></span></a></li>
                             </ul>
                         </div>

@@ -24,7 +24,7 @@ require_once "./components/header.php";
                         <div class="login_part_form_iner">
                             <h3>Welcome Back ! <br>
                                 Please Sign in now</h3>
-                            <form class="row contact_form" action="./forms/login.php" method="post" novalidate="novalidate">
+                            <form class="row contact_form" action="./forms/login.php<?php echo isset($_GET['to_checkout']) ? '?'.http_build_query($_GET) : '' ?>" method="post" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="user" name="user" value="<?php echo session_val('user') ?>"
                                         placeholder="Username or Email">

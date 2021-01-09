@@ -1,3 +1,7 @@
+if ( findGetParameter('ccart') == 'true' ) {
+    clear_cart();
+}
+
 let cart = get_cart();
 
 function add_to_cart(id, name, price, image, quantity = 1) {
@@ -35,6 +39,12 @@ function get_cart() {
     modify_cart(cart)
 
     return cart
+}
+
+function clear_cart() {
+    localStorage.clear()
+    deleteAllCookies()
+    erase_cookie()
 }
 
 function modify_cart(cart) {
@@ -95,4 +105,28 @@ function read_cookie() {
 
 function erase_cookie() {
     document.cookie = 'cookie=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function findGetParameter(parameterName) {
+    var result = null,
+    tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }

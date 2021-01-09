@@ -108,8 +108,8 @@ function on_success (string $path): void {
     die();
 }
 
-function logout(): void {
-    header("location: ./../logout.php");
+function logout(bool $from_form = true): void {
+    $from_form ? header("Location: ./../logout.php") : header("Location: ./logout.php");
     die();
 }
 
@@ -122,4 +122,15 @@ function clear_sessions(): void {
 		if ( $key != 'user' )
 			unset($_SESSION[$key]);
 	}
+}
+
+function is_logged_in(): bool {
+    return isset($_SESSION['uuid']) && !empty($_SESSION['uuid']);
+}
+
+function clear_cookies(string $key) {
+    if (isset($_COOKIE[key])) {
+        unset($_COOKIE[key]);
+        setcookie(key, '', time() - 3600, '/');
+    }
 }

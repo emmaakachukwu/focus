@@ -12,7 +12,7 @@ if ( $sql->execute() ) {
     if ( $_username || $_email ) {
         if ($_password === $password) {
             $_SESSION['uuid'] = $_uuid;
-            isset($_GET['to_cart']) && $_GET['to_cart'] == 'true' ? on_success('cart') : on_success('index');
+            isset($_GET['to_checkout']) && $_GET['to_checkout'] == 'true' ? on_success('cart') : on_success('index');
         }
     }
     array_push($errors, 'Invalid login');

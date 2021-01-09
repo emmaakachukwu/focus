@@ -48,7 +48,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `deposits` (
 $link->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `orders` (
-    `id` VARCHAR(100) NOT NULL PRIMARY KEY,
+    `id` INT(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `order_id` VARCHAR(100) NOT NULL,
     `user_id` INT(50) NOT NULL,
     `product_id` INT(50) NOT NULL,
     `quantity` INT(50) NOT NULL,
