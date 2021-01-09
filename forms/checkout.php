@@ -1,4 +1,5 @@
 <?php
+use Yabacon\Paystack;
 
 require_once "./../lib/config.php";
 
@@ -15,28 +16,29 @@ else
 
 check_errors($errors);
 
-$cart = json_decode($_COOKIE['cart']);
+$cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart']) : [];
 $total = 0;
 foreach ($cart as $c) {
     $total += $c->price;
 }
 
-if ( $type == '1' ) {
-    $sql = "SELECT * FROM users WHERE uuid = '$uuid' LIMIT 1";
-    $result = $link->query($sql);
-    if ( $result->num_rows ) {
-        $user = $result->fetch_object();
-    } else {
-        logout(false);
-    }
+$sql = "SELECT * FROM users WHERE uuid = '$uuid' LIMIT 1";
+$result = $link->query($sql);
+if ( $result->num_rows ) {
+    $user = $result->fetch_object();
+} else {
+    logout(false);
+}
 
+$hash = md5($uuid . time() . '...');
+$order_id = substr($hash, 0, 5) . substr($hash, -5, 5);
+
+if ( $type == '1' ) {
     if ( $user->balance < $total )
         array_push($errors, 'Your wallet balance is too low to place this order', 'Use the online payment option or go to deposit to top up your balance');
 
     check_errors($errors);
 
-    $hash = md5($uuid . time() . '...');
-    $order_id = substr($hash, 0, 5) . substr($hash, -5, 5);
     $at = date('Y-m-d H:i:s');
     $ok = false;
     foreach ( $cart as $c ) {
@@ -66,6 +68,25 @@ if ( $type == '1' ) {
             on_success('index');
         }
     }
+} else if ( $type == '2' ) {
+    $paystack = new Yabacon\Paystack('sk_test_8d43572dd1a9f390f7058073c7e8f85e2c24048e');
+
+    try
+    {
+      $tranx = $paystack->transaction->initialize([
+        'amount'=>$total * 100,       // in kobo
+        'email'=>$user->email,         // unique to customers
+        'reference'=>$order_id, // unique to transactions
+      ]);
+    } catch(\Yabacon\Paystack\Exception\ApiException $e){
+      print_r($e->getResponseObject());
+      die($e->getMessage());
+    }
+
+    save_last_transaction_reference($tranx->data->reference);
+
+    // redirect to page so User can pay
+    header('Location: ' . $tranx->data->authorization_url);
 }
 
 array_push($errors, 'Something went wrong; retry');

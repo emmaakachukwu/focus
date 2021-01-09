@@ -27,7 +27,8 @@ foreach ($cart as $c) {
         <div class="container mb-30">
             <div class="card p-4 mb-30">
                 <h6>Pay online now</h6>
-                <form action="#" method="post">
+                <form action="./forms/checkout.php" method="post">
+                    <input type="hidden" name='type' value='2'>
                     <button class="btn btn-primary">Continue</button>
                 </form>
             </div>
