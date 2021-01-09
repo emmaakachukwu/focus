@@ -5,7 +5,7 @@ require_once "./components/header.php";
 $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart']) : [];
 $total = 0;
 foreach ($cart as $c) {
-  $total += $c->price;
+  $total += $c->price * $c->quantity;
 }
 
 ?>
@@ -46,9 +46,10 @@ foreach ($cart as $c) {
                         </td>
                         <td>
                             <div class="product_count">
-                                <span class="input-number-decrement"> <i class="ti-minus"></i></span>
+                                <!-- <span class="input-number-decrement"> <i class="ti-minus"></i></span>
                                 <input class="input-number" type="text" value="1" min="0" max="10">
-                                <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                                <span class="input-number-increment"> <i class="ti-plus"></i></span> -->
+                                <span><?php echo $c->quantity ?></span>
                             </div>
                         </td>
                         <td>
@@ -58,7 +59,7 @@ foreach ($cart as $c) {
                   <?php } ?>                  
                     <tr class="bottom_button">
                         <td>
-                            <button type="button" class="btn btn-danger rounded">Remove All</a>
+                          <button type="button" class="btn btn-danger rounded" onclick="removeAll()">Remove All</a>
                         </td>
                         <td></td>
                         <td></td>
@@ -76,7 +77,7 @@ foreach ($cart as $c) {
                   </tbody>
                 </table>
               <div class="checkout_btn_inner float-right">
-                <a class="btn_1" href="./index.php">Continue Shopping</a>
+                <a class="btn_1" href="./index.php#shop_now">Continue Shopping</a>
                 <form action="./forms/cart.php" method="post" class="d-inline">
                   <button type="submit" class="btn_1 checkout_btn_1">Proceed to checkout</button>
                 </form>

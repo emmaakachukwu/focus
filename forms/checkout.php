@@ -25,7 +25,7 @@ check_errors($errors);
 $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart']) : [];
 $total = 0;
 foreach ($cart as $c) {
-    $total += $c->price;
+    $total += $c->price * $c->quantity;
 }
 
 $sql = "SELECT * FROM users WHERE uuid = '$uuid' LIMIT 1";
@@ -71,15 +71,19 @@ foreach ( $cart as $c ) {
 }
 
 if ( $ok ) {
-    $sql = $link->prepare("UPDATE `users` SET balance=balance-?, updated_at=? WHERE id=?");
-    $sql->bind_param("sss", $total, $at, $user->id);
-    if ( $sql->execute() ) {
-        clear_cookies('cart');
-
-        $_GET['ccart'] = 'true';
-        $_SESSION['success'] = ['Order has been saved'];
-        on_success('index');
+    if ( $type == '1' ) {
+        $sql = $link->prepare("UPDATE `users` SET balance=balance-?, updated_at=? WHERE id=?");
+        $sql->bind_param("sss", $total, $at, $user->id);
+        if ( !$sql->execute() )
+            array_push($errors, 'something went wrong..');
+        check_errors($errors);
+        $sql->close();
     }
+
+    clear_cookies('cart');
+    $_GET['ccart'] = 'true';
+    $_SESSION['success'] = ['Order has been saved'];
+    on_success('index');
 }
 
 array_push($errors, 'Something went wrong; retry');

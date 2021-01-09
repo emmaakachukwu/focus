@@ -1,4 +1,4 @@
-if ( findGetParameter('ccart') == 'true' ) {
+if (findGetParameter('ccart') == 'true') {
     clear_cart();
 }
 
@@ -60,7 +60,6 @@ function modify_cart(cart) {
 }
 
 function check_products_in_cart(products) {
-    let in_cart = false
     products.forEach(e => {
         for (let i = 0; i < cart.length; i++) {
             if (cart[i].id == e.id) {
@@ -109,13 +108,13 @@ function erase_cookie() {
 
 function findGetParameter(parameterName) {
     var result = null,
-    tmp = [];
+        tmp = [];
     location.search
         .substr(1)
         .split("&")
         .forEach(function (item) {
-          tmp = item.split("=");
-          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+            tmp = item.split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
         });
     return result;
 }
@@ -129,4 +128,9 @@ function deleteAllCookies() {
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
+}
+
+function removeAll() {
+    clear_cart()
+    location.reload()
 }

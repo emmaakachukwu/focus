@@ -29,9 +29,9 @@ if ( $result->num_rows ) {
                                             <div class="single-popular-items mb-50 text-center">
                                                 <div class="popular-img">
                                                     <?php if ( isset($product->image_path) && !empty($product->image_path) ) { ?>
-                                                        <img src="./uploads/products/<?php echo $product->image_path ?>" alt="<?php echo $product->name ?>">
+                                                        <a href="./product_details.php?product_id=<?php echo $product->id ?>"><img src="./uploads/products/<?php echo $product->image_path ?>" alt="<?php echo $product->name ?>"></a>
                                                     <?php } else {  ?>
-                                                        <h3><?php echo get_inits($product->name) ?> </h3>
+                                                        <a href="./product_details.php?product_id=<?php echo $product->id ?>"><h3><?php echo get_inits($product->name) ?> </h3></a>
                                                     <?php } ?>
                                                     <div class="img-cap" onclick="add_to_cart('<?php echo $product->id ?>', '<?php echo $product->name ?>', '<?php echo $product->price ?>', '<?php echo $product->image_path ?? '' ?>')">
                                                         <span id="add-<?php echo $product->id ?>" onload="check_product('<?php echo $product->id ?>')">Add to cart</span>

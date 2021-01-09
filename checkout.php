@@ -7,7 +7,7 @@ require_once "./utils.php";
 $cart = json_decode($_COOKIE['cart']);
 $total = 0;
 foreach ($cart as $c) {
-    $total += $c->price;
+    $total += $c->price * $c->quantity;
 }
 
 ?>
