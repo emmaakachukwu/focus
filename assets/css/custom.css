@@ -35,3 +35,9 @@ li.hot::before {
 button {
     cursor: pointer !important;
 }
+
+.img-cap {
+    visibility: visible !important;
+    bottom: 0 !important;
+    opacity: 1 !important;
+}

@@ -24,9 +24,8 @@
                             <div class="footer-tittle">
                                 <h4>Quick Links</h4>
                                 <ul>
-                                    <li><a href="./index.php">Products</a></li>
+                                    <li><a href="./index.php">Home</a></li>
                                     <li><a href="./about.php">About</a></li>
-                                    <li><a href="./deposit.php">Deposit</a></li>
                                 </ul>
                             </div>
                         </div>

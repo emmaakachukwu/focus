@@ -1,6 +1,9 @@
 <?php
 $title = "Home | Products";
 $header_title = 'Welcome to Focus Shop..';
+$header_title2 = 'Shopping ends here..';
+$header_subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+$header_subtitle2 = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.";
 require_once "./components/header.php";
 
 $sql = "SELECT * FROM products WHERE deleted_at IS NULL ORDER BY created_at DESC";
@@ -13,8 +16,8 @@ if ( $result->num_rows ) {
 
 ?>
     <main>
-        <?php include_once "./components/page_header.php"; ?>
-        <section class="popular-items latest-padding">
+        <?php include_once "./components/home_slider.php"; ?>
+        <section class="popular-items latest-padding" id="shop_now">
             <div class="container">
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">

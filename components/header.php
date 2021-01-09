@@ -16,7 +16,6 @@ $title = $title ?? 'Home';
     <title><?php echo ucfirst($title) . ' | ' . strtoupper($app_name) ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
@@ -29,7 +28,7 @@ $title = $title ?? 'Home';
     <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- <link rel="stylesheet" href="assets/css/nice-select.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/custom.css">
 
@@ -59,20 +58,17 @@ $title = $title ?? 'Home';
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="index.php">home</a></li>
-                                    <?php if (is_logged_in()) echo "<li><a href='deposit.php'>deposit</a></li>" ?>
                                     <li><a href="about.php">about</a></li>
+                                    <?php if (is_logged_in()) echo "<li><a href='deposit.php'>deposit</a></li>" ?>
+                                    <?php if (is_logged_in()) echo "<li><a href='settings.php'>settings</a></li>" ?>
+                                    <?php if (is_logged_in()) echo "<li><a href='logout.php'>logout</a></li>" ?>
                                 </ul>
                             </nav>
                         </div>
                         <!-- Header Right -->
                         <div class="header-right">
                             <ul>
-                                <li>
-                                    <div class="nav-search search-switch">
-                                        <span class="flaticon-search"></span>
-                                    </div>
-                                </li>
-                                <li><?php echo is_logged_in() ? "<a href='settings.php'><span class='flaticon-search'></span></a>" : "<a href='login.php'><span class='flaticon-user'></span></a>" ?></li>
+                                <?php if (!is_logged_in()) echo "<li><a href='login.php'><span class='flaticon-user'></span></a></li>" ?>
                                 <li class="hot" id="hot"><a href="cart.php"><span class="flaticon-shopping-cart"></span></a></li>
                             </ul>
                         </div>
