@@ -1,6 +1,7 @@
 <?php
 $title = $header_title = "Login";
 require_once "./components/header.php";
+require_once "./lib/is_auth.php";
 
 ?>
 
