@@ -38,6 +38,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `deposits` (
     `id` INT(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `user_id` INT(50) NOT NULL,
     `amount` INT(50) NULL,
+    `image_path` VARCHAR(100) NULL,
     `approved_at` TIMESTAMP NULL,
 
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
