@@ -1,5 +1,7 @@
 <?php
+
 $title = $header_title = "Deposit";
+require_once "./lib/auth.php";
 require_once "./components/header.php";
 
 $sql = "SELECT * FROM wallets";
