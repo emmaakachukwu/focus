@@ -48,6 +48,26 @@ if ( $result->num_rows ) {
             <?php } } ?>
         </div>
     <?php } ?>
+
+    <div class="col-md-6 p-2">
+        <div class="card-box p-4">
+            <form action='./forms/settings.php' method='POST'>
+                <h4 class="mb-30">Update Password</h4>
+                <input type="hidden" name='tab' value='password'>
+                <div class="input-group custom">
+                    <input type="password" class="form-control form-control-lg" placeholder="Current Password" name='current_password' required>
+                </div>
+                <div class="input-group custom">
+                    <input type="password" class="form-control form-control-lg" placeholder="New Password" name='new_password' required>
+                </div>
+                <div class="input-group custom">
+                    <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" name='confirm_password' required>
+                </div>
+
+                <input type='submit' class="btn btn-primary btn-lg btn-block" value='Update Password'>
+            </form>
+        </div>
+    </div>
 </div>
 
 

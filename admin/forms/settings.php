@@ -24,7 +24,7 @@ if ( $tab != 'password' ) {
         try {
             $sql = $link->prepare("UPDATE `wallets` SET wallet_id=?, updated_at=? WHERE type=?");
             // dd($link->error);
-            $sql->bind_param("sssssss", $wid, $updated_at, $tab);
+            $sql->bind_param("sss", $wid, $updated_at, $tab);
             $sql->execute();
             $sql->close();
         } catch (Exception $e) {

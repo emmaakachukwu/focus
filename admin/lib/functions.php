@@ -87,7 +87,8 @@ function check_errors(array $errors): void {
         $errors = array_reverse($errors);
         $_SESSION['errors'] = $errors;
 
-        header("Location: ../".$error_redirect.".php");
+        $params = count($_GET) ? '?'.http_build_query($_GET) : '';
+        header("Location: ../".$error_redirect.".php".$params);
         die();
     }
 }

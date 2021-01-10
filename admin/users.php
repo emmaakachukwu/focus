@@ -60,7 +60,7 @@ function get_location($user): string {
                         <td><?php echo  get_location($users[$i]) ?></td>
                         <td><?php echo  $users[$i]->balance ?></td>
                         <td><?php echo  date('d M, Y h:i a', strtotime($users[$i]->created_at)) ?? '' ?></td>
-                        <td><a class="btn btn-primary text-white">Edit</a></td>
+                        <td><a href="./edit_user.php?uid=<?php echo $users[$i]->id ?>" class="btn btn-primary text-white">Edit</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
