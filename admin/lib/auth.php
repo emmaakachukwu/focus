@@ -1,11 +1,10 @@
 <?php
 
 require_once "./lib/config.php";
-
-if ( !isset($_SESSION['user']) || empty($_SESSION['user']) ) {
+if ( !isset($_SESSION['admin']) || empty($_SESSION['admin']) ) {
     logout(false);
 } else {
-    $id = $_SESSION['user'];
+    $id = $_SESSION['admin'];
 }
 
 $sql = "SELECT * FROM users WHERE id = '$id' LIMIT 1";
@@ -15,4 +14,3 @@ if ( $result->num_rows ) {
 } else {
     logout(false);
 }
-// dd($user);

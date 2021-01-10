@@ -94,7 +94,7 @@ function check_errors(array $errors): void {
 
 function on_success (string $path): void {
     foreach ( $_SESSION as $key => $value ) {
-		if ( $key != 'success' && $key != 'user' )
+		if ( $key != 'success' && $key != 'admin' )
 			unset($_SESSION[$key]);
     }
     $params = count($_GET) ? '?'.http_build_query($_GET) : '';
@@ -108,7 +108,7 @@ function session_val(string $key): string {
 
 function clear_sessions(): void {
 	foreach ( $_SESSION as $key => $value ) {
-		if ( $key != 'user' )
+		if ( $key != 'admin' )
 			unset($_SESSION[$key]);
 	}
 }

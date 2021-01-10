@@ -11,7 +11,7 @@ if ( $sql->execute() ) {
     $sql->fetch();
     if ( $_username || $_email ) {
         if ($_password === $password) {
-            $_SESSION['user'] = $_id;
+            $_SESSION['admin'] = $_id;
             on_success('dashboard');
         }
     }

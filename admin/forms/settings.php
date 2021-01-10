@@ -22,9 +22,9 @@ $updated_at = date('Y-m-d H:i:s');
 if ( $tab != 'password' ) {
     foreach ( $post as $key => $value ) {
         try {
-            $sql = $link->prepare("UPDATE `wallets` SET wallet_id=?, bank_name=?, bank_address=?, recipient_name=?, swift_code=?, updated_at=? WHERE type=?");
+            $sql = $link->prepare("UPDATE `wallets` SET wallet_id=?, updated_at=? WHERE type=?");
             // dd($link->error);
-            $sql->bind_param("sssssss", $wid, $bname, $baddress, $recipient, $swift, $updated_at, $tab);
+            $sql->bind_param("sssssss", $wid, $updated_at, $tab);
             $sql->execute();
             $sql->close();
         } catch (Exception $e) {

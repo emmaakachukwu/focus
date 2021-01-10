@@ -11,7 +11,7 @@ function session_val(string $key): string {
 
 function clear_sessions(): void {
 	foreach ( $_SESSION as $key => $value ) {
-		if ( $key != 'user' )
+		if ( $key != 'admin' )
 			unset($_SESSION[$key]);
 	}
 }
