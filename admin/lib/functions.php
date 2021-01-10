@@ -96,8 +96,9 @@ function on_success (string $path): void {
     foreach ( $_SESSION as $key => $value ) {
 		if ( $key != 'success' && $key != 'user' )
 			unset($_SESSION[$key]);
-	}
-    header("Location: ./../".$path.".php");
+    }
+    $params = count($_GET) ? '?'.http_build_query($_GET) : '';
+    header("Location: ./../".$path.".php".$params);
     die();
 }
 

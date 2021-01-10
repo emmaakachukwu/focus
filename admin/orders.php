@@ -48,7 +48,7 @@ if ( $result->num_rows ) {
                         <td><?php echo  $i+1 ?></td>
                         <td>
                             <?php if ( isset($orders[$i]->image_path) ) { ?>
-                                <img src="./uploads/products/<?php echo $orders[$i]->image_path ?>" alt="<?php echo $orders[$i]->name ?>" class="image-fluid">
+                                <img src="./../uploads/products/<?php echo $orders[$i]->image_path ?>" alt="<?php echo $orders[$i]->name ?>" class="image-fluid table-image">
                             <?php } ?>
                         </td>
                         <td><?php echo $orders[$i]->username ?></td>

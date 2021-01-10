@@ -15,10 +15,11 @@ else if ( isset($_GET['type']) && !empty($_GET['type']) )
 else
     array_push($errors, 'something went wrong; retry..');
 
-if ( isset($_GET['transaction_id']) && !empty($_GET['transaction_id']) )
-    $txn_id = $_GET['transaction_id'];
-else 
-    array_push($errors, 'missing transaction url');
+if ( $type == '2' )
+    if ( isset($_GET['transaction_id']) && !empty($_GET['transaction_id']) )
+        $txn_id = $_GET['transaction_id'];
+    else 
+        array_push($errors, 'missing transaction url');
 
 check_errors($errors);
 
