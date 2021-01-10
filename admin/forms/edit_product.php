@@ -54,8 +54,8 @@ if ( isset($_FILES['file']) && !empty(trim($_FILES['file']['name'])) ) {
 }
 
 $at = date('Y-m-d H:i:s');
-$sql = $link->prepare("UPDATE `products` SET `name`=?, price=?, formula=?, `desc`=?, image_path=?, updated_at=? WHERE id=?");
-$sql->bind_param("sssssss", $product, $price, $formula, $description, $newFileName, $at, $product_id);
+$sql = $link->prepare("UPDATE `products` SET `name`=?, price=?, `desc`=?, image_path=?, updated_at=? WHERE id=?");
+$sql->bind_param("sssssi", $product, $price, $description, $newFileName, $at, $product_id);
 if ( $sql->execute() ) {
     $_SESSION['success'] = ["Product updated"];
     $sql->close();

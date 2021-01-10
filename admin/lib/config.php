@@ -1,7 +1,7 @@
 <?php
 
-$is_local = getenv('HTTP_HOST') == '127.0.0.1' || getenv('HTTP_HOST') == 'localhost';
-
+// $is_local = getenv('HTTP_HOST') == '127.0.0.1' || getenv('HTTP_HOST') == 'localhost';
+$is_local = true;
 if ( $is_local ) {
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
