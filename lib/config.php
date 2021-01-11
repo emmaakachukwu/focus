@@ -1,7 +1,6 @@
 <?php
 
-// $is_local = getenv('HTTP_HOST') == '127.0.0.1' || getenv('HTTP_HOST') == 'localhost';
-$is_local = true;
+$is_local = getenv('HTTP_HOST') == '127.0.0.1' || getenv('HTTP_HOST') == 'localhost';
 
 if ( $is_local ) {
     error_reporting(E_ALL);
@@ -18,9 +17,10 @@ if ( $is_local ) {
     define('DB_PASSWORD', '');
     define('DB_NAME', 'focus');
 } else {
-    define('DB_USERNAME', 'cresjvym_fadchems');
-    define('DB_PASSWORD', 'tydev2020');
-    define('DB_NAME', 'cresjvym_fadchems');
+    // insert cPanel DB details here
+    define('DB_USERNAME', '');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', '');
 }
  
 /* Attempt to connect to MySQL database */
